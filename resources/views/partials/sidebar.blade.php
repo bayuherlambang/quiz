@@ -3,7 +3,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="index3.html" class="brand-link">
-    <span class="brand-text font-weight-light">AdminLTE 3</span>
+
+      <span class="brand-text font-weight-light">QUEING</span>
   </a>
 
   <!-- Sidebar -->
@@ -12,38 +13,52 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            @if(!Auth::user()->isAdmin())
             <li class="nav-item">
               <a href="{{ route('tests.index') }}" class="nav-link {{ $request->segment(1) == 'tests' ? 'active' : '' }}">
                 <i class="fas fa-edit nav-icon"></i>
-                <span class="title">@lang('quickadmin.test.new')</span>
+                <p>@lang('quickadmin.test.new')</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ route('results.index') }}" class="nav-link {{ $request->segment(1) == 'results' ? 'active' : '' }}">
                 <i class="fas fa-poll-h nav-icon"></i>
-                <span class="title">@lang('quickadmin.results.title')</span>
+                <p>@lang('quickadmin.results.title')</p>
               </a>
             </li>
+            @endif
             @if(Auth::user()->isAdmin())
             <li class="nav-item">
+              <a href="{{ route('home') }}" class="nav-link {{ $request->segment(1) == 'home' ? 'active' : '' }}">
+                <i class="fas fa-home nav-icon"></i>
+                <p>@lang('quickadmin.dashboard')</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('results.index') }}" class="nav-link {{ $request->segment(1) == 'results' ? 'active' : '' }}">
+                <i class="fas fa-poll-h nav-icon"></i>
+                <p>@lang('quickadmin.results.title_admin')</p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="{{ route('topics.index') }}" class="nav-link {{ $request->segment(1) == 'topics' ? 'active' : '' }}">
-                <i class="fas fa-fw fa-file"></i>
-                <span class="title">@lang('quickadmin.topics.title')</span>
+                <i class="fas fa-fw fa-file nav-icon"></i>
+                <p>@lang('quickadmin.topics.title')</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ route('questions.index') }}" class="nav-link {{ $request->segment(1) == 'questions' ? 'active' : '' }}">
                 <i class="far fa-file-alt nav-icon"></i>
-                <span class="title">@lang('quickadmin.questions.title')</span>
+                <p>@lang('quickadmin.questions.title')</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ route('questions_options.index') }}" class="nav-link {{ $request->segment(1) == 'questions_options' ? 'active' : '' }}">
                 <i class="fas fa-list nav-icon"></i>
-                <span class="title">@lang('quickadmin.questions-options.title')</span>
+                <p>@lang('quickadmin.questions-options.title')</p>
               </a>
             </li>
-            <!--------
+            <!--
             <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-fw fa-user"></i>
@@ -71,7 +86,7 @@
                     <p>@lang('quickadmin.user-actions.title')</p>
                   </a>
                 </li>
-                -------->
+              -->
             </ul>
           </li>
           @endif

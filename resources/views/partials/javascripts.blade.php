@@ -25,6 +25,18 @@
 <script src="{{ url('adminlte') }}/dist/js/demo.js"></script>
 
 
+<script src="{{ url('datatables') }}/js/jquery.dataTables.min.js"></script>
+<script src="{{ url('datatables') }}/js/dataTables.buttons.min.js"></script>
+<script src="{{ url('datatables') }}/js/buttons.flash.min.js"></script>
+<script src="{{ url('datatables') }}/js/jszip.min.js"></script>
+<script src="{{ url('datatables') }}/js/pdfmake.min.js"></script>
+<script src="{{ url('datatables') }}/js/vfs_fonts.js"></script>
+<script src="{{ url('datatables') }}/js/buttons.html5.min.js"></script>
+<script src="{{ url('datatables') }}/js/buttons.print.min.js"></script>
+<script src="{{ url('datatables') }}/js/moment.min.js"></script>
+<script src="{{ url('datatables') }}/js/daterangepicker.min.js"></script>
+
+
 <script>
     window._token = '{{ csrf_token() }}';
 </script>

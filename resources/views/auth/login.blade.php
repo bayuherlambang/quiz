@@ -4,7 +4,9 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Admin</b>LTE</a>
+    <a href="#"><b>QUEING </b>SMG2 - SMG3
+    </a><br>
+    <small>Quiz & Briefing</small>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -20,7 +22,7 @@
               </ul>
           </div>
       @endif
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg"></p>
 
       <form class="form-horizontal"
             role="form"
@@ -37,7 +39,7 @@
                  value="{{ old('email') }}">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-user"></span>
             </div>
           </div>
         </div>
@@ -54,12 +56,7 @@
         </div>
         <div class="row">
           <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
+            <a href="{{ route('auth.register') }}" class="text-center">Register</a>
           </div>
           <!-- /.col -->
           <div class="col-4">
@@ -68,9 +65,7 @@
           <!-- /.col -->
         </div>
       </form>
-      <p class="mb-0">
-        <a href="{{ route('auth.register') }}" class="text-center">Register a new membership</a>
-      </p>
+
     </div>
     <!-- /.login-card-body -->
   </div>

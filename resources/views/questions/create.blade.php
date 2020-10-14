@@ -4,12 +4,12 @@
     <h3 class="page-title">@lang('quickadmin.questions.title')</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['questions.store']]) !!}
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="card">
+        <div class="card-header">
             @lang('quickadmin.create')
         </div>
 
-        <div class="panel-body">
+        <div class="card-body">
             <div class="row">
                 <div class="col-md-6 form-group">
                     {!! Form::label('topic_id', 'Topic*', ['class' => 'control-label']) !!}
@@ -22,7 +22,7 @@
                     @endif
                 </div>
                 <div class="col-md-6 form-group">
-                    {!! Form::label('time', 'Time to answer (second)', ['class' => 'control-label']) !!}
+                    {!! Form::label('time', 'Time to answer (second)*', ['class' => 'control-label']) !!}
                     {!! Form::text('time', old('time'), ['class' => 'form-control ', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('option1'))

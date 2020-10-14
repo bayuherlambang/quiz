@@ -24,6 +24,7 @@ class StoreQuestionsRequest extends FormRequest
     {
         return [
             'topic_id'           => 'required',
+            'time'               => 'required',
             'question_text'      => 'required',
             'answer_explanation' => 'required',
         ];

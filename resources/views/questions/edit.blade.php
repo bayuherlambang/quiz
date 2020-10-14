@@ -5,20 +5,30 @@
 
     {!! Form::model($question, ['method' => 'PUT', 'route' => ['questions.update', $question->id]]) !!}
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="card">
+        <div class="card-header">
             @lang('quickadmin.edit')
         </div>
 
-        <div class="panel-body">
+        <div class="card-body">
             <div class="row">
-                <div class="col-md-12 form-group">
+                <div class="col-md-6 form-group">
                     {!! Form::label('topic_id', 'Topic*', ['class' => 'control-label']) !!}
                     {!! Form::select('topic_id', $topics, old('topic_id'), ['class' => 'form-control']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('topic_id'))
                         <p class="help-block">
                             {{ $errors->first('topic_id') }}
+                        </p>
+                    @endif
+                </div>
+                <div class="col-md-6 form-group">
+                    {!! Form::label('time', 'Time to answer (second)*', ['class' => 'control-label']) !!}
+                    {!! Form::text('time', old('time'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('option1'))
+                        <p class="help-block">
+                            {{ $errors->first('time') }}
                         </p>
                     @endif
                 </div>

@@ -68,7 +68,7 @@
         </div>
         @php
         $relations = [
-            'roles' => \App\Role::get()->pluck('title', 'id')->prepend('Please select', ''),
+            'roles' => \App\Role::get()->pluck('title', 'id')->prepend('Please select role', ''),
         ];
         @endphp
         <div class="input-group{{ $errors->has('role_id') ? ' has-error' : '' }} mb-3">

@@ -7,6 +7,7 @@ use App\Question;
 use App\Result;
 use App\Test;
 use App\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,10 +29,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $siteTitle = 'Dashboard';
         $questions = Question::count();
         $users = User::whereNull('role_id')->count();
         $quizzes = Test::count();
         $average = Test::avg('result');
-        return view('home', compact('questions', 'users', 'quizzes', 'average'));
+
+
+        $resultByUser = Test::all()->load('user');
+
+        if (!Auth::user()->isAdmin()) {
+            $results = $resultByUser->where('user_id', '=', Auth::id());
+        }
+
+        return view('home', compact('questions', 'users', 'quizzes', 'average', 'resultByUser', 'siteTitle'));
     }
 }

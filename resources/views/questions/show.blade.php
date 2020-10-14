@@ -2,15 +2,15 @@
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.questions.title')</h3>
-    
-    <div class="panel panel-default">
-        <div class="panel-heading">
+
+    <div class="card">
+        <div class="card-header">
             @lang('quickadmin.view')
         </div>
-        
-        <div class="panel-body">
+
+        <div class="card-body">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <table class="table table-bordered table-striped">
                         <tr><th>@lang('quickadmin.questions.fields.topic')</th>
                     <td>{{ $question->topic->title or '' }}</td></tr><tr><th>@lang('quickadmin.questions.fields.question-text')</th>

@@ -75,6 +75,7 @@ return [
   ],
   'results' => [
     'title' => 'My Results',
+    'title_admin' => 'Results',
     'fields' => [
       'user' => 'User',
       'last_login' => 'Last Login',

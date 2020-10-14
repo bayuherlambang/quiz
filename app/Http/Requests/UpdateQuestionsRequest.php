@@ -23,12 +23,12 @@ class UpdateQuestionsRequest extends FormRequest
     public function rules()
     {
         return [
-            
+
             'topic_id' => 'required',
             'question_text' => 'required',
-            
+            'time'          =>  'required',
             'answer_explanation' => 'required',
-            
+
         ];
     }
 }

@@ -4,13 +4,13 @@
     <h3 class="page-title">@lang('quickadmin.laravel-quiz')</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['tests.store']]) !!}
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            @lang('quickadmin.quiz')
+    <div class="card-header">
+        <div class="card-header">
+            <!-- @lang('quickadmin.quiz') -->
         </div>
         <?php //dd($questions) ?>
     @if(count($questions) > 0)
-        <div class="panel-body">
+        <div class="card-body">
         <?php $i = 1; ?>
         @foreach($questions as $question)
             @if ($i > 1)  @endif
@@ -22,9 +22,6 @@
                         @if ($question->code_snippet != '')
                             <div class="code_snippet">{!! $question->code_snippet !!}</div>
                         @endif
-                        <br>
-                        <label id="time_remaining"></label>
-                        <label>second time remaining to answer.</label>
                         <input
                             type="hidden"
                             name="questions[{{ $i }}]"
@@ -56,6 +53,8 @@
                         </label>
                     @endforeach
                     </div>
+                    <label id="time_remaining" class="danger"></label>
+                    <label>second time remaining to answer.</label>
                 </div>
             </div>
         <?php $i++; ?>
@@ -64,7 +63,7 @@
     @endif
     </div>
 
-    {!! Form::submit(trans('quickadmin.submit_quiz'), ['class' => 'btn btn-danger hidden', 'id' => 'sumbit']) !!}
+    {!! Form::submit(trans('quickadmin.submit_quiz'), ['class' => 'btn btn-danger', 'id' => 'sumbit', 'style'=> 'display:none;'] ) !!}
     {!! Form::close() !!}
     <div id="test"></div>
 @stop

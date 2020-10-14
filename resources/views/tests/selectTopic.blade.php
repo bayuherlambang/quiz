@@ -4,11 +4,11 @@
     <h3 class="page-title">@lang('quickadmin.setSKill')</h3>
     <!-- {!! Form::open(['method' => 'POST', 'route' => ['tests.store']]) !!} -->
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="card">
+        <div class="card-header">
             @lang('quickadmin.SkillTitle')
         </div>
-        <div class="panel-body">
+        <div class="card-body">
           @foreach($topics as $topic)
             {!! Form::open(['route' => ['setTopic', $topic->id], 'method' => 'PUT']) !!}
                 {{Form::button($topic->title, ['type' =>'submit', 'class' => 'submit-btn btn btn-success'])}}

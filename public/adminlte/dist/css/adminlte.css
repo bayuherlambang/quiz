@@ -11703,6 +11703,10 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
   padding: 0.8125rem 0.5rem;
   transition: width 0.3s ease-in-out;
   white-space: nowrap;
+  margin-left: 19px !important;
+}
+.small, small {
+    font-size: 104%;
 }
 
 .brand-link:hover {
