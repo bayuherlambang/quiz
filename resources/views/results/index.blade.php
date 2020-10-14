@@ -59,7 +59,6 @@
             </table>
         </div>
     </div>
-    <script src="{{ url('datatables') }}/jquery-2.2.4.min.js"></script>
     <script type="text/javascript">
     //current month :
     var date = new Date();
@@ -77,7 +76,7 @@
       //nama depan = 0
       //nama belakang = 1
       //tanggal terdaftar =2
-      var evalDate= parseDateValue(aData[10]);
+      var evalDate= parseDateValue(aData[2]);
         if ( ( isNaN( dateStart ) && isNaN( dateEnd ) ) ||
              ( isNaN( dateStart ) && evalDate <= dateEnd ) ||
              ( dateStart <= evalDate && isNaN( dateEnd ) ) ||
