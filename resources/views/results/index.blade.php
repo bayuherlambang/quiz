@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    @if(Auth::user()->isAdmin())
+    <!-- @if(Auth::user()->isAdmin())
     <h3 class="page-title">@lang('quickadmin.results.title_admin')</h3>
     @else
     <h3 class="page-title">@lang('quickadmin.results.title')</h3>
-    @endif
+    @endif -->
     <div class="card">
         <div class="card-header">
             @lang('quickadmin.list')
@@ -43,7 +43,13 @@
                                 <td>{{ $result->user->name or '' }} ({{ $result->user->email or '' }})</td>
                                 <td>{{ $result->user->last_login}}</td>
                             @endif
-                                <td>{{ $result->created_at or '' }}</td>
+                            @php
+                            $split = explode(" ", $result->created_at);
+                            $tanggal = explode("-", $split[0]);
+                            $jam = $split[1];
+                            $tanggal = $tanggal[2]."/".$tanggal[1]."/".$tanggal[0]." ".$jam;
+                            @endphp
+                                <td>{{ $tanggal or '' }}</td>
                                 <td>{{ $result->result }}</td>
                                 <td>
                                     <a href="{{ route('results.show',[$result->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.view')</a>

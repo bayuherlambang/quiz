@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Lang;
 use App\Question;
 use App\QuestionsOption;
 use Illuminate\Http\Request;
@@ -23,8 +23,9 @@ class QuestionsController extends Controller
     public function index()
     {
         $questions = Question::all();
+        $siteTitle = Lang::get('quickadmin.questions.title');
 
-        return view('questions.index', compact('questions'));
+        return view('questions.index', compact('questions', 'siteTitle'));
     }
 
     /**
@@ -46,8 +47,8 @@ class QuestionsController extends Controller
             'option4' => 'Option #4',
             'option5' => 'Option #5'
         ];
-
-        return view('questions.create', compact('correct_options') + $relations);
+        $siteTitle = Lang::get('quickadmin.questions.title');
+        return view('questions.create', compact('correct_options', 'siteTitle') + $relations);
     }
 
     /**
@@ -89,8 +90,8 @@ class QuestionsController extends Controller
         ];
 
         $question = Question::findOrFail($id);
-
-        return view('questions.edit', compact('question') + $relations);
+        $siteTitle = Lang::get('quickadmin.questions.title');
+        return view('questions.edit', compact('question', 'siteTitle') + $relations);
     }
 
     /**
@@ -122,8 +123,8 @@ class QuestionsController extends Controller
         ];
 
         $question = Question::findOrFail($id);
-
-        return view('questions.show', compact('question') + $relations);
+        $siteTitle = Lang::get('quickadmin.questions.title');
+        return view('questions.show', compact('question', 'siteTitle') + $relations);
     }
 
 

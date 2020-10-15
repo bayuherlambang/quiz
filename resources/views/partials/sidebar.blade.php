@@ -2,7 +2,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="index3.html" class="brand-link">
+  <a href="#" class="brand-link">
 
       <span class="brand-text font-weight-light">QUEING</span>
   </a>
@@ -14,6 +14,12 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             @if(!Auth::user()->isAdmin())
+            <li class="nav-item">
+              <a href="{{ route('home') }}" class="nav-link {{ $request->segment(1) == 'home' ? 'active' : '' }}">
+                <i class="fas fa-home nav-icon"></i>
+                <p>@lang('quickadmin.dashboard')</p>
+              </a>
+            </li>
             <li class="nav-item">
               <a href="{{ route('tests.index') }}" class="nav-link {{ $request->segment(1) == 'tests' ? 'active' : '' }}">
                 <i class="fas fa-edit nav-icon"></i>

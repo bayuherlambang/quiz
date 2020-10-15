@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3 class="page-title">@lang('quickadmin.results.title')</h3>
+    <!-- <h3 class="page-title">@lang('quickadmin.results.title')</h3> -->
 
     <div class="card">
         <div class="card-header">

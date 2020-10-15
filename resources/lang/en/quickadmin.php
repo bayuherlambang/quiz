@@ -88,7 +88,7 @@ return [
   'laravel-quiz' => 'New Laravel Quiz',
   'setSKill' => 'Select Skill',
   'SkillTitle' => 'Select your skill',
-  'quiz' => 'Answer these 10 questions. There\'s no time limit.',
+  'quiz' => 'Answer these questions.',
   'submit_quiz' => 'Submit answers',
   'view-result' => 'View result',
 ];

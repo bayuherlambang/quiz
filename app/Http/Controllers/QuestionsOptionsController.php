@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Lang;
 use App\QuestionsOption;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreQuestionsOptionsRequest;
@@ -22,8 +22,9 @@ class QuestionsOptionsController extends Controller
     public function index()
     {
         $questions_options = QuestionsOption::all();
+        $siteTitle = Lang::get('quickadmin.questions-options.title');
 
-        return view('questions_options.index', compact('questions_options'));
+        return view('questions_options.index', compact('questions_options', 'siteTitle'));
     }
 
     /**
@@ -36,8 +37,8 @@ class QuestionsOptionsController extends Controller
         $relations = [
             'questions' => \App\Question::get()->pluck('question_text', 'id')->prepend('Please select', ''),
         ];
-
-        return view('questions_options.create', $relations);
+        $siteTitle = Lang::get('quickadmin.questions-options.title');
+        return view('questions_options.create', compact('siteTitle'), $relations);
     }
 
     /**
@@ -67,8 +68,8 @@ class QuestionsOptionsController extends Controller
         ];
 
         $questions_option = QuestionsOption::findOrFail($id);
-
-        return view('questions_options.edit', compact('questions_option') + $relations);
+        $siteTitle = Lang::get('quickadmin.questions-options.title');
+        return view('questions_options.edit', compact('questions_option', 'siteTitle') + $relations);
     }
 
     /**
@@ -100,8 +101,8 @@ class QuestionsOptionsController extends Controller
         ];
 
         $questions_option = QuestionsOption::findOrFail($id);
-
-        return view('questions_options.show', compact('questions_option') + $relations);
+        $siteTitle = Lang::get('quickadmin.questions-options.title');
+        return view('questions_options.show', compact('questions_option', 'siteTitle') + $relations);
     }
 
 

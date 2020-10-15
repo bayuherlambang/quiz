@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3 class="page-title">@lang('quickadmin.questions-options.title')</h3>
+    <!-- <h3 class="page-title">@lang('quickadmin.questions-options.title')</h3> -->
 
     <p>
         <a href="{{ route('questions_options.create') }}" class="btn btn-success">@lang('quickadmin.add_new')</a>
@@ -140,7 +140,7 @@
         //menambahkan daterangepicker di dalam datatables
        $("div.datesearchbox").html('<div class="input-group"> <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span></div><input type="text" class="" style="position: relative;" id="datesearch" placeholder="Search by date range.."></div>');
 
-       document.getElementsByClassName("datesearchbox")[0].style.textAlign = "right";
+       //document.getElementsByClassName("datesearchbox")[0].style.textAlign = "right";
 
        //konfigurasi daterangepicker pada input dengan id datesearch
        $('#datesearch').daterangepicker({

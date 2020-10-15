@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Lang;
 use Auth;
 use App\Test;
 use App\TestAnswer;
@@ -28,8 +28,13 @@ class ResultsController extends Controller
         if (!Auth::user()->isAdmin()) {
             $results = $results->where('user_id', '=', Auth::id());
         }
+        if(Auth::user()->isAdmin())
+          $siteTitle = "Result";
+        else
+          $siteTitle = "My Result";
 
-        return view('results.index', compact('results'));
+
+        return view('results.index', compact('results', 'siteTitle'));
     }
 
     /**
@@ -50,6 +55,7 @@ class ResultsController extends Controller
             ;
         }
         //dd($test);
-        return view('results.show', compact('test', 'results'));
+        $siteTitle = $test->user->name."'s Quiz Result";
+        return view('results.show', compact('test', 'results', 'siteTitle'));
     }
 }

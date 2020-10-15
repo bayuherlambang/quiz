@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3 class="page-title">@lang('quickadmin.laravel-quiz')</h3>
+    <!-- <h3 class="page-title">@lang('quickadmin.laravel-quiz')</h3> -->
     {!! Form::open(['method' => 'POST', 'route' => ['tests.store']]) !!}
-
-    <div class="card-header">
+    <div class="card">
         <div class="card-header">
-            <!-- @lang('quickadmin.quiz') -->
+            @lang('quickadmin.quiz')
         </div>
         <?php //dd($questions) ?>
     @if(count($questions) > 0)
@@ -18,9 +17,9 @@
 
                 <div class="col-md-12 form-group">
                     <div class="form-group">
-                        <strong>Question {{ $i }}.<br />{!! nl2br($question->question_text) !!}</strong>
+                        <p>Question {{ $i }}.<br />{!! nl2br($question->question_text) !!}</p>
                         @if ($question->code_snippet != '')
-                            <div class="code_snippet">{!! $question->code_snippet !!}</div>
+                            <div class="code_snippet">"{!! $question->code_snippet !!}"</div>
                         @endif
                         <input
                             type="hidden"
@@ -53,7 +52,7 @@
                         </label>
                     @endforeach
                     </div>
-                    <label id="time_remaining" class="danger"></label>
+                    <label id="time_remaining" style="color : red"></label>
                     <label>second time remaining to answer.</label>
                 </div>
             </div>

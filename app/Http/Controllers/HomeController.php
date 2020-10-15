@@ -31,15 +31,18 @@ class HomeController extends Controller
     {
         $siteTitle = 'Dashboard';
         $questions = Question::count();
-        $users = User::whereNull('role_id')->count();
+        $users = User::where('role_id', 2)->count();
         $quizzes = Test::count();
         $average = Test::avg('result');
 
-
         $resultByUser = Test::all()->load('user');
+        $quizzezByUser = Test::all()->load('user');
+        $averageByUser = Test::all()->load('user');
 
         if (!Auth::user()->isAdmin()) {
             $results = $resultByUser->where('user_id', '=', Auth::id());
+            $quizzes = $quizzezByUser->where('user_id', '=', Auth::id())->count();
+            $average = $averageByUser->where('user_id', '=', Auth::id())->avg('result');
         }
 
         return view('home', compact('questions', 'users', 'quizzes', 'average', 'resultByUser', 'siteTitle'));

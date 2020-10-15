@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Lang;
 use App\Topic;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreTopicsRequest;
@@ -22,8 +22,8 @@ class TopicsController extends Controller
     public function index()
     {
         $topics = Topic::all();
-
-        return view('topics.index', compact('topics'));
+        $siteTitle = Lang::get('quickadmin.topics.title');
+        return view('topics.index', compact('topics', 'siteTitle'));
     }
 
     /**
@@ -33,7 +33,8 @@ class TopicsController extends Controller
      */
     public function create()
     {
-        return view('topics.create');
+        $siteTitle = Lang::get('quickadmin.topics.title');
+        return view('topics.create', compact('siteTitle'));
     }
 
     /**
@@ -58,9 +59,10 @@ class TopicsController extends Controller
      */
     public function edit($id)
     {
+        $siteTitle = Lang::get('quickadmin.topics.title');
         $topic = Topic::findOrFail($id);
 
-        return view('topics.edit', compact('topic'));
+        return view('topics.edit', compact('topic', 'siteTitle'));
     }
 
     /**
@@ -87,9 +89,10 @@ class TopicsController extends Controller
      */
     public function show($id)
     {
+      $siteTitle = Lang::get('quickadmin.topics.title');
         $topic = Topic::findOrFail($id);
 
-        return view('topics.show', compact('topic'));
+        return view('topics.show', compact('topic', 'siteTitle'));
     }
 
 

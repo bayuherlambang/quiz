@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Lang;
 use DB;
 use Auth;
 use App\Test;
@@ -38,15 +38,18 @@ class TestsController extends Controller
             }
         }
         */
+        //$siteTitle = Lang::get('quickadmin.laravel-quiz');
+        $siteTitle = Lang::get('quickadmin.setSKill');
         $topics = Topic::all();
         //dd($topic);
-        return view('tests.selectTopic', compact('topics'));
+        return view('tests.selectTopic', compact('topics', 'siteTitle'));
         //return view('tests.create', compact('$topic'));
     }
     public function getQuestion($topic)
     {
         // $topics = Topic::inRandomOrder()->limit(10)->get();
         //$topic = 2;
+        $siteTitle = Lang::get('quickadmin.laravel-quiz');
         $questions = Question::where('topic_id', $topic)->inRandomOrder()->get();
 
         foreach ($questions as &$question) {
@@ -63,7 +66,7 @@ class TestsController extends Controller
             }
         }
         */
-        return view('tests.create', compact('questions'));
+        return view('tests.create', compact('questions', 'siteTitle'));
     }
 
     /**
