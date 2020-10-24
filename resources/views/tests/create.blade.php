@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- <h3 class="page-title">@lang('quickadmin.laravel-quiz')</h3> -->
     {!! Form::open(['method' => 'POST', 'route' => ['tests.store']]) !!}
+
     <div class="card">
         <div class="card-header">
             @lang('quickadmin.quiz')
@@ -17,10 +17,13 @@
 
                 <div class="col-md-12 form-group">
                     <div class="form-group">
-                        <p>Question {{ $i }}.<br />{!! nl2br($question->question_text) !!}</p>
+                        <strong>Question {{ $i }}.<br />{!! nl2br($question->question_text) !!}</strong>
                         @if ($question->code_snippet != '')
-                            <div class="code_snippet">"{!! $question->code_snippet !!}"</div>
+                            <div class="code_snippet">{!! $question->code_snippet !!}</div>
                         @endif
+                        <br>
+                        <label id="time_remaining"></label>
+                        <label>second remaining to answer.</label>
                         <input
                             type="hidden"
                             name="questions[{{ $i }}]"
@@ -52,8 +55,6 @@
                         </label>
                     @endforeach
                     </div>
-                    <label id="time_remaining" style="color : red"></label>
-                    <label>second time remaining to answer.</label>
                 </div>
             </div>
         <?php $i++; ?>
@@ -62,22 +63,25 @@
     @endif
     </div>
 
-    {!! Form::submit(trans('quickadmin.submit_quiz'), ['class' => 'btn btn-danger', 'id' => 'sumbit', 'style'=> 'display:none;'] ) !!}
+    {!! Form::submit(trans('quickadmin.submit_quiz'), ['class' => 'btn btn-danger', 'id' => 'sumbit', 'style' => 'display:none;']) !!}
     {!! Form::close() !!}
     <div id="test"></div>
 @stop
 
 @section('javascript')
     @parent
+	<!--
     <script src="{{ url('quickadmin/js') }}/timepicker.js"></script>
+	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.4.5/jquery-ui-timepicker-addon.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
+	-->
     <script>
-        $('.datetime').datetimepicker({
+        /* $('.datetime').datetimepicker({
             autoclose: true,
             dateFormat: "{{ config('app.date_format_js') }}",
             timeFormat: "hh:mm:ss"
-        });
+        }); */
         /** ndasmet started here.. */
         $(document).ready(function() {
           var questions = document.getElementsByClassName("question");

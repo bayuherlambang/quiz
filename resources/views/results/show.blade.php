@@ -34,29 +34,29 @@
                           @if(!$result->essay_answer)
                           <tr class="test-option-false">
                               <th style="width: 10%">Question #{{ $i }}</th>
-                              <th>{{ $result->question->question_text or '' }}</th>
+                              <th class="wrap">{{ $result->question->question_text or '' }}</th>
                           </tr>
                           @else
                           <tr class="">
                               <th style="width: 10%">Question #{{ $i }}</th>
-                              <th>{{ $result->question->question_text or '' }}</th>
+                              <th class="wrap">{{ $result->question->question_text or '' }}</th>
                           </tr>
                           @endif
                         @else
                         <tr class="test-option{{ $result->correct ? '-true' : '-false' }}">
                             <th style="width: 10%">Question #{{ $i }}</th>
-                            <th>{{ $result->question->question_text or '' }}</th>
+                            <th class="wrap">{{ $result->question->question_text or '' }}</th>
                         </tr>
                         @endif
                         @if ($result->question->code_snippet != '')
                             <tr>
                                 <td>Code snippet</td>
-                                <td><div class="code_snippet">{!! $result->question->code_snippet !!}</div></td>
+                                <td><div class="code_snippet wrap">{!! $result->question->code_snippet !!}</div></td>
                             </tr>
                         @endif
                         <tr>
-                            <td>Answer</td>
-                            <td>
+                            <td >Answer</td>
+                            <td class="wrap">
                                 @if($result->question->essay)
                                   {{$result->essay_answer}}
                                 @endif
@@ -73,7 +73,7 @@
                         </tr>
                         <tr>
                             <td>Answer Explanation</td>
-                            <td>
+                            <td class="wrap">
                             {!! $result->question->answer_explanation  !!}
                                 @if ($result->question->more_info_link != '')
                                     <br>
@@ -95,4 +95,10 @@
             <a href="{{ route('results.index') }}" class="btn btn-default">See all my results</a>
         </div>
     </div>
+    <style>
+    .wrap {
+    	word-break : break-word !important;
+    }
+
+    </style>
 @stop

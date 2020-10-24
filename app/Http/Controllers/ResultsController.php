@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreResultsRequest;
 use App\Http\Requests\UpdateResultsRequest;
 
+
 class ResultsController extends Controller
 {
     public function __construct()
@@ -32,7 +33,6 @@ class ResultsController extends Controller
           $siteTitle = "Result";
         else
           $siteTitle = "My Result";
-
 
         return view('results.index', compact('results', 'siteTitle'));
     }

@@ -64,7 +64,8 @@
                 <p>@lang('quickadmin.questions-options.title')</p>
               </a>
             </li>
-            <!--
+
+            @if(Auth::user()->name == 'Admin')
             <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-fw fa-user"></i>
@@ -92,7 +93,7 @@
                     <p>@lang('quickadmin.user-actions.title')</p>
                   </a>
                 </li>
-              -->
+              @endif
             </ul>
           </li>
           @endif

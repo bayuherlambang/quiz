@@ -39,9 +39,15 @@
                     @if (count($results) > 0)
                         @foreach ($results as $result)
                             <tr>
+							@php
+							$split = explode(" ", $result->user->last_login);
+                            $tanggal = explode("-", $split[0]);
+                            $jam = $split[1];
+                            $last_login = $tanggal[2]."/".$tanggal[1]."/".$tanggal[0]." ".$jam;
+							@endphp
                             @if(Auth::user()->isAdmin())
                                 <td>{{ $result->user->name or '' }} ({{ $result->user->email or '' }})</td>
-                                <td>{{ $result->user->last_login}}</td>
+                                <td>{{ $last_login }}</td>
                             @endif
                             @php
                             $split = explode(" ", $result->created_at);
@@ -82,7 +88,7 @@
       //nama depan = 0
       //nama belakang = 1
       //tanggal terdaftar =2
-      var evalDate= parseDateValue(aData[2]);
+      var evalDate= parseDateValue(aData[1]);
         if ( ( isNaN( dateStart ) && isNaN( dateEnd ) ) ||
              ( isNaN( dateStart ) && evalDate <= dateEnd ) ||
              ( dateStart <= evalDate && isNaN( dateEnd ) ) ||

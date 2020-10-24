@@ -20,7 +20,7 @@
               </ul>
           </div>
       @endif
-      <p class="login-box-msg">Register a new membership</p>
+      <p class="login-box-msg">Register a new user</p>
 
       <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
           {{ csrf_field() }}

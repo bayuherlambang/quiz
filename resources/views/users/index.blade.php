@@ -7,13 +7,13 @@
         <a href="{{ route('users.create') }}" class="btn btn-success">@lang('quickadmin.add_new')</a>
     </p>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="card">
+        <div class="card-header">
             @lang('quickadmin.list')
         </div>
 
-        <div class="panel-body">
-            <table class="table table-bordered table-striped {{ count($users) > 0 ? 'datatable' : '' }} dt-select">
+        <div class="card-body">
+            <table class="table table-bordered table-striped {{ count($users) > 0 ? 'datatable' : '' }} dt-select" id="dataTable">
                 <thead>
                     <tr>
                         <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
@@ -23,6 +23,15 @@
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
+                <tfoot>
+                    <tr>
+                        <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
+                        <th>@lang('quickadmin.users.fields.name')</th>
+                        <th>@lang('quickadmin.users.fields.email')</th>
+                        <th>@lang('quickadmin.users.fields.role')</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </tfoot>
 
                 <tbody>
                     @if (count($users) > 0)
@@ -58,7 +67,70 @@
 
 @section('javascript')
     <script>
-    //0895360285010
+
         window.route_mass_crud_entries_destroy = '{{ route('users.mass_destroy') }}';
+
+        $(document).ready(function() {
+              var tabel = $('#dataTable').DataTable( {
+                  dom: '<Bf><r>t<lip>',
+                  //"dom":'<Bflr<<'datesearchbox'>>tip>',
+                  buttons: [
+                      'copy', 'csv', 'excel', 'print'
+                  ],
+                  columnDefs: [
+                   { type: 'date-eu', targets: 0 }
+                 ],
+                 order: [0, 'desc'],
+                  initComplete: function () {
+                    this.api().columns().every( function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo( $(column.footer()).empty() )
+                            .on( 'change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search( val ? '^'+val+'$' : '', true, false )
+                                    .draw();
+                            } );
+
+                        column.data().unique().sort().each( function ( d, j ) {
+                            select.append( '<option value="'+d+'">'+d+'</option>' )
+                        } );
+                    });
+                },
+                'columns' : [
+                  {"width" : "10%"},
+                ]
+              });
+              //menambahkan daterangepicker di dalam datatables
+             $("div.datesearchbox").html('<div class="input-group"> <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span></div><input type="text" class="" style="position: relative;" id="datesearch" placeholder="Search by date range.."></div>');
+
+
+
+             //konfigurasi daterangepicker pada input dengan id datesearch
+             $('#datesearch').daterangepicker({
+                autoUpdateInput: false
+              });
+
+             //menangani proses saat apply date range
+              $('#datesearch').on('apply.daterangepicker', function(ev, picker) {
+                 $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+                 start_date=picker.startDate.format('DD/MM/YYYY');
+                 end_date=picker.endDate.format('DD/MM/YYYY');
+                 $.fn.dataTableExt.afnFiltering.push(DateFilterFunction);
+                 tabel.draw();
+              });
+
+              $('#datesearch').on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+                start_date='';
+                end_date='';
+                $.fn.dataTable.ext.search.splice($.fn.dataTable.ext.search.indexOf(DateFilterFunction, 1));
+                tabel.draw();
+              });
+            });
     </script>
 @endsection

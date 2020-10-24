@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- <h3 class="page-title">@lang('quickadmin.setSKill')</h3> -->
+    
     <!-- {!! Form::open(['method' => 'POST', 'route' => ['tests.store']]) !!} -->
 
     <div class="card">
@@ -24,7 +24,9 @@
 
 @section('javascript')
     @parent
+	<!--
     <script src="{{ url('quickadmin/js') }}/timepicker.js"></script>
+	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.4.5/jquery-ui-timepicker-addon.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
     <script>
@@ -34,5 +36,6 @@
             timeFormat: "hh:mm:ss"
         });
     </script>
+	-->
 
 @stop
