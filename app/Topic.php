@@ -14,7 +14,7 @@ class Topic extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['title'];
+    protected $fillable = ['title', 'open_date'];
 
     public static function boot()
     {

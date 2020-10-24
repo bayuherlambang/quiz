@@ -52,6 +52,7 @@ return [
     'title' => 'Topics',
     'fields' => [
       'title' => 'Title',
+      'date' => 'Open Date',
     ],
   ],
   'questions' => [
@@ -87,8 +88,10 @@ return [
   ],
   'laravel-quiz' => 'New Quiz',
   'setSKill' => 'Select Skill',
+  'QuizTaked' => 'Quiz taked, select another topic.',
   'SkillTitle' => 'Select your skill',
   'quiz' => 'Answer these questions.',
   'submit_quiz' => 'Submit answers',
   'view-result' => 'View result',
+  'no_quiz_today'=> 'No topic assigned for today'
 ];

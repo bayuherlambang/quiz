@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 <!-- Font Awesome -->
 <link rel="stylesheet" href="{{ url('adminlte') }}/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <!-- Ionicons -->
@@ -17,6 +17,7 @@
 
 
 <!-- datatables -->
+
 <script src="{{ url('datatables') }}/jquery-2.2.4.min.js"></script>
 <link href="{{ url('datatables') }}/css/jquery.datatables.min.css" rel="stylesheet">
 <link href="{{ url('datatables') }}/css/buttons.datatables.min.css" rel="stylesheet">

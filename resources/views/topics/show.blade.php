@@ -12,8 +12,14 @@
             <div class="row">
                 <div class="col-md-12">
                     <table class="table table-bordered table-striped">
-                        <tr><th>@lang('quickadmin.topics.fields.title')</th>
-                    <td>{{ $topic->title }}</td></tr>
+                        <tr>
+                          <th>@lang('quickadmin.topics.fields.title')</th>
+                          <td>{{ $topic->title }}</td>
+                        </tr>
+                        <tr>
+                          <th>@lang('quickadmin.topics.fields.date')</th>
+                          <td>{{ $topic->open_date }}</td>
+                        </tr>
                     </table>
                 </div>
             </div>

@@ -45,4 +45,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('results_mass_destroy', ['uses' => 'ResultsController@massDestroy', 'as' => 'results.mass_destroy']);
 
     Route::put('test/getQuestion/{id}', 'TestsController@getQuestion')->name('setTopic');
+    Route::get('test/checktopic/{id}', 'TestsController@checkEnrolledTopic')->name('CheckTopic');
+
 });

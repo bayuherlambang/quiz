@@ -7,6 +7,7 @@ use Auth;
 use App\Test;
 use App\TestAnswer;
 use App\Topic;
+use App\Result;
 use App\Question;
 use App\QuestionsOption;
 use Illuminate\Http\Request;
@@ -40,11 +41,26 @@ class TestsController extends Controller
         */
         //$siteTitle = Lang::get('quickadmin.laravel-quiz');
         $siteTitle = Lang::get('quickadmin.setSKill');
-        $topics = Topic::all();
-        //dd($topic);
+        $today = date("Y-m-d");
+        $topics = Topic::all()->where('open_date', '=', $today);
+        //dd($topics);
         return view('tests.selectTopic', compact('topics', 'siteTitle'));
         //return view('tests.create', compact('$topic'));
     }
+
+    public function checkEnrolledTopic($topic){
+        $check = TestAnswer::where('user_id', '=', Auth::id())->first();
+        if($check){
+          $sample_question = $check->question_id;
+          $topicOfQuestion = Question::find($sample_question);
+          $getTopic = $topicOfQuestion->topic_id;
+          $data = true;
+        }else{
+          $data = false;
+        }
+        echo json_encode($data);
+    }
+
     public function getQuestion($topic)
     {
         // $topics = Topic::inRandomOrder()->limit(10)->get();

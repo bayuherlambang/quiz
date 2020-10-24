@@ -22,6 +22,16 @@
                         </p>
                     @endif
                 </div>
+                <div class="col-md-12 form-group">
+                    {!! Form::label('open_date', 'Quiz Date*', ['class' => 'control-label']) !!}
+                    {!! Form::date('open_date', old('open_date'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('title'))
+                        <p class="help-block">
+                            {{ $errors->first('open_date') }}
+                        </p>
+                    @endif
+                </div>
             </div>
 
         </div>
